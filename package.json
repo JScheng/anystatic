@@ -1,0 +1,28 @@
+{
+  "name": "anystatic",
+  "version": "0.1.0",
+  "description": "node static server",
+  "main": "src/app.js",
+  "scripts": {
+    "lint": "eslint .",
+    "fix": "eslint --fix ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JScheng/anystatic.git"
+  },
+  "keywords": [
+    "node",
+    "server",
+    "static"
+  ],
+  "author": "jscheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JScheng/anystatic/issues"
+  },
+  "homepage": "https://github.com/JScheng/anystatic#readme",
+  "devDependencies": {
+    "eslint": "^4.17.0"
+  }
+}
