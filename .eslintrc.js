@@ -1,6 +1,7 @@
 module.exports = {
     "extends": ["eslint:recommended"],
     "rules": {
+        semi: [2, 'never'],
         "no-console": ["error", {
             "allow": ["warn", "error", "info"]
         }]
