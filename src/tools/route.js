@@ -6,6 +6,7 @@ const stat = promisify(fs.stat)
 const readdir = promisify(fs.readdir)
 const config = require('../config/defaultConfig')
 const mime = require('../tools/mime')
+const compress = require('../tools/compress')
 
 const pugPath = path.resolve(__dirname, '../templates/index.pug')
 const compiledFunction = pug.compileFile(pugPath)
@@ -16,7 +17,13 @@ module.exports = async function (req, res, filePath) {
         if (stats.isFile()) {
             res.statusCode = 200
             res.setHeader('Content-Type', mime(filePath))
-            fs.createReadStream(filePath).pipe(res)
+
+            let rs = null
+            rs = fs.createReadStream(filePath)
+            if (filePath.match(config.compress)) {
+                rs = compress(rs, req, res)
+            }
+            rs.pipe(res)
         } else if (stats.isDirectory()) {
             const files = await readdir(filePath)
             res.statusCode = 200
